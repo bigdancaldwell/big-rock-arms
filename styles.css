@@ -194,6 +194,7 @@ a:hover { text-decoration-color: var(--red); }
 .field ::placeholder { color: #6B5D45; opacity: 1; }
 .field input:focus, .field textarea:focus { outline: none; box-shadow: 0 0 0 3px var(--board), 0 0 0 5px var(--ink); }
 .field [aria-invalid=true] { border-color: var(--red); box-shadow: 0 0 0 2px var(--red); }
+.field input[readonly] { background: var(--board); font-weight: 800; cursor: default; }
 .field__err { margin: 6px 0 0; color: var(--red-deep); font-size: .875rem; font-weight: 700; }
 .field--pair { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; }
 
@@ -249,6 +250,8 @@ a:hover { text-decoration-color: var(--red); }
 .transfer { background: var(--red); color: var(--cream); padding: clamp(64px, 8vw, 112px) 0; border-bottom: 6px double var(--ink); }
 .transfer__grid { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(32px, 5vw, 80px); align-items: start; }
 .transfer__lede { margin: 18px 0 28px; font-size: 1.1875rem; max-width: 40ch; }
+.transfer__fee { margin: -8px 0 28px; display: flex; align-items: baseline; gap: .5em; font: 800 .875rem/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; }
+.transfer__fee span { font: 900 4rem/.85 var(--f-display); color: var(--board); letter-spacing: -.01em; }
 .transfer__steps { margin: 0; padding: 0; list-style: none; counter-reset: s; border-top: 3px solid var(--cream); }
 .transfer__steps li {
   counter-increment: s; display: grid; grid-template-columns: 3.2rem 1fr; gap: 8px; align-items: start;

@@ -34,7 +34,33 @@
     return k ? k.value : 'Special order';
   }
 
+  // A single FFL transfer is a flat $20: choosing it fills the budget box with the fee.
+  var TRANSFER = 'FFL transfer';
+  var TRANSFER_FEE = '$20';
+  var budgetLabel = document.querySelector('label[for=budget]');
+  var budgetLabelHTML = budgetLabel.innerHTML;
+  var itemPlaceholder = item.placeholder;
+  var lastKind = kindValue();
+
+  function applyKind(kind) {
+    if (kind === lastKind) return;
+    if (kind === TRANSFER) {
+      budget.dataset.prev = budget.value;
+      budget.value = TRANSFER_FEE;
+      budget.readOnly = true;
+      budgetLabel.innerHTML = 'Transfer fee <span class="opt">(single firearm)</span>';
+      item.placeholder = 'The firearm you bought, and who is shipping it';
+    } else if (lastKind === TRANSFER) {
+      budget.value = budget.dataset.prev || '';
+      budget.readOnly = false;
+      budgetLabel.innerHTML = budgetLabelHTML;
+      item.placeholder = itemPlaceholder;
+    }
+    lastKind = kind;
+  }
+
   function sync() {
+    applyKind(kindValue());
     print(out.contents, clip(item.value, 70), defaults.contents);
     print(out.specContents, clip(item.value, 70), defaults.contents);
     print(out.packed, clip(name.value, 40), defaults.packed);
@@ -66,7 +92,9 @@
       '',
       'Order type: ' + kind,
       'Looking for: ' + item.value.trim(),
-      'Budget: ' + (budget.value.trim() || 'Not specified'),
+      (kind === TRANSFER
+        ? 'Transfer fee: ' + TRANSFER_FEE + ' (single firearm)'
+        : 'Budget: ' + (budget.value.trim() || 'Not specified')),
       '',
       'Name: ' + (name.value.trim() || ''),
       'Email: ' + email.value.trim(),
