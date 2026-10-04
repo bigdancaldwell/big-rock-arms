@@ -1,0 +1,9 @@
+# Internal working notes and design-tool state: keep private, not part of the public site
+PRODUCT.md
+DESIGN.md
+.impeccable/
+# Original logo masters (large; the site uses the optimized copies)
+assets/logo-source.png
+assets/logo-clean-source.png
+.DS_Store
+assets/logo-900.png

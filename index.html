@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Big Rock Arms | Firearms sourced to order in Tucson, AZ</title>
+  <meta name="description" content="Big Rock Arms is a licensed firearms dealer in Tucson, Arizona. Tell us what you're looking for and we'll find it at a rock solid price. Special orders, FFL transfers, optics and accessories. By appointment.">
+  <meta name="theme-color" content="#F2C230">
+  <meta property="og:title" content="Big Rock Arms | You name it. We find it.">
+  <meta property="og:description" content="Licensed firearms dealer in Tucson, AZ. Special orders and FFL transfers, one customer at a time.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bigrockarms.com/">
+  <meta property="og:image" content="https://bigrockarms.com/assets/og-image.jpg">
+  <link rel="canonical" href="https://bigrockarms.com/">
+  <link rel="icon" type="image/png" href="assets/favicon-96.png">
+  <link rel="preload" href="assets/fonts/BigShouldersDisplay-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/AlfaSlabOne-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="star" viewBox="0 0 24 24"><path d="M12 1.6l3.1 7.1 7.7.7-5.8 5.1 1.7 7.6L12 18.2 5.3 22.1 7 14.5 1.2 9.4l7.7-.7z"/></symbol>
+  </svg>
+
+  <a class="skip" href="#request">Skip to the request form</a>
+
+  <header class="flap">
+    <div class="flap__inner">
+      <a class="flap__brand" href="#top" aria-label="Big Rock Arms, back to top">
+        <img src="assets/logo-320.webp" width="54" height="57" alt="">
+        <span>Big Rock Arms</span>
+      </a>
+      <nav class="flap__nav" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#handle">What we handle</a>
+        <a href="#transfers">Transfers</a>
+        <a href="#pickup">Pickup</a>
+      </nav>
+      <a class="btn btn--red btn--small" href="#request">Send a request</a>
+    </div>
+    <p class="flap__print"><span class="flap__lic">Licensed firearms dealer <svg class="pip"><use href="#star"/></svg></span> <span>Tucson, Arizona <svg class="pip"><use href="#star"/></svg></span> <span>By appointment</span></p>
+  </header>
+
+  <main id="top">
+    <!-- Carton face -->
+    <section class="face" aria-labelledby="face-title">
+      <div class="face__grid">
+        <div class="face__copy">
+          <div class="band">
+            <img class="band__seal" src="assets/logo-640.webp" width="300" height="317" alt="Big Rock Arms badge: a desert rock spire against a sunburst">
+            <p class="band__line"><span class="band__label">Contents</span> <span class="band__qty">1&nbsp;&times;</span> <output id="band-contents" for="item">Your next gun</output></p>
+          </div>
+
+          <h1 id="face-title" class="face__title">You name it.<br>We find it.<br><span>Rock solid price.</span></h1>
+
+          <p class="face__lede">A licensed firearms dealer in Tucson, working one customer at a time. Tell us what you&rsquo;re after. We shop our distributor accounts, send you a straight quote, and handle the paperwork when it lands.</p>
+
+          <dl class="spec" aria-label="Your order, as it would read on the box">
+            <div class="spec__row spec__row--lead">
+              <dt>Contents</dt>
+              <dd><span class="spec__qty">1&nbsp;&times;</span> <output id="spec-contents" for="item">Your next gun</output></dd>
+            </div>
+            <div class="spec__row">
+              <dt>Packed for</dt>
+              <dd><output id="packed" for="name">One customer</output></dd>
+            </div>
+            <div class="spec__row">
+              <dt>Order type</dt>
+              <dd><output id="kind">Special order</output></dd>
+            </div>
+            <div class="spec__row">
+              <dt>Pickup</dt>
+              <dd>Tucson, AZ, by appointment</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- End-flap label: the working request form -->
+        <aside class="label" id="request" aria-labelledby="request-title">
+          <div class="label__frame">
+            <h2 id="request-title" class="label__title">Request ticket</h2>
+            <p class="label__sub">We&rsquo;ll reply with availability and a price.</p>
+
+            <form id="request-form" novalidate>
+              <div class="field">
+                <label for="item">What are you looking for?</label>
+                <textarea id="item" name="item" rows="3" required maxlength="400" placeholder="Make, model, caliber, or just the job it needs to do" aria-describedby="item-err"></textarea>
+                <p class="field__err" id="item-err" hidden>Tell us what you&rsquo;re after, even roughly.</p>
+              </div>
+
+              <fieldset class="field kinds">
+                <legend>Order type</legend>
+                <div class="kinds__opts">
+                  <label><input type="radio" name="kind" value="Special order" checked><span>Special order</span></label>
+                  <label><input type="radio" name="kind" value="FFL transfer"><span>FFL transfer</span></label>
+                  <label><input type="radio" name="kind" value="Optics &amp; accessories"><span>Optics &amp; gear</span></label>
+                  <label><input type="radio" name="kind" value="Something else"><span>Something else</span></label>
+                </div>
+              </fieldset>
+
+              <div class="field field--pair">
+                <div>
+                  <label for="name">Your name</label>
+                  <input id="name" name="name" type="text" autocomplete="name" maxlength="80">
+                </div>
+                <div>
+                  <label for="budget">Budget <span class="opt">(optional)</span></label>
+                  <input id="budget" name="budget" type="text" inputmode="decimal" maxlength="40" placeholder="$">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="email">Your email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required maxlength="120" aria-describedby="email-err">
+                <p class="field__err" id="email-err" hidden>We need an email to send your quote to.</p>
+              </div>
+
+              <button class="btn btn--red btn--block" type="submit">Send request</button>
+              <p class="label__fine" id="form-note">Opens your email app with the request filled in, addressed to <a href="mailto:bigrockarms@gmail.com">bigrockarms@gmail.com</a>.</p>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Side panel: the order table -->
+    <section class="side" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <h2 id="how-title" class="side__title">How an order works</h2>
+        <p class="side__intro">Four steps from &ldquo;I&rsquo;m looking for&rdquo; to it being in your hands.</p>
+        <table class="table">
+          <thead>
+            <tr><th scope="col">Step</th><th scope="col">What happens</th><th scope="col">Your part</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table__n">1</td>
+              <td><strong>Tell us what you want.</strong> A make and model, a caliber, or just what it needs to do.</td>
+              <td>Send a request</td>
+            </tr>
+            <tr>
+              <td class="table__n">2</td>
+              <td><strong>We shop it.</strong> We check our distributor accounts for availability and price, then send you a straight quote.</td>
+              <td>Approve it or pass</td>
+            </tr>
+            <tr>
+              <td class="table__n">3</td>
+              <td><strong>We order it.</strong> Once you say go, we place the order and email you when it ships.</td>
+              <td>Watch your inbox</td>
+            </tr>
+            <tr>
+              <td class="table__n">4</td>
+              <td><strong>You pick it up.</strong> Meet us by appointment in Tucson, complete ATF Form 4473 and the federal background check.</td>
+              <td>Bring your photo ID</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Product line-up, printed like the side of the box -->
+    <section class="lineup" id="handle" aria-labelledby="handle-title">
+      <div class="wrap">
+        <h2 id="handle-title" class="lineup__title">What we handle</h2>
+        <ul class="lineup__list">
+          <li class="lineup__item lineup__item--lead">
+            <p class="lineup__count" aria-hidden="true">1&times;</p>
+            <h3>Special orders</h3>
+            <p>Handguns, rifles, and shotguns. Name the gun, or describe the job and your budget, and we&rsquo;ll go looking.</p>
+          </li>
+          <li class="lineup__item">
+            <h3>FFL transfers</h3>
+            <p>Bought it online? Have it shipped to us and pick it up here.</p>
+          </li>
+          <li class="lineup__item">
+            <h3>Optics &amp; accessories</h3>
+            <p>Scopes, red dots, mounts, magazines, holsters. Sourced the same way.</p>
+          </li>
+        </ul>
+        <p class="lineup__note">Suppressors or NFA items? <a href="mailto:bigrockarms@gmail.com?subject=Question%20about%20NFA%20items">Ask us</a> and we&rsquo;ll tell you straight what we can do.</p>
+      </div>
+    </section>
+
+    <!-- Transfers, on the red panel -->
+    <section class="transfer" id="transfers" aria-labelledby="transfers-title">
+      <div class="wrap transfer__grid">
+        <div>
+          <h2 id="transfers-title" class="transfer__title">Bought it online? Ship it to Big&nbsp;Rock.</h2>
+          <p class="transfer__lede">Online sellers have to ship firearms to a licensed dealer. Point them at us.</p>
+          <a class="btn btn--cream" href="mailto:bigrockarms@gmail.com?subject=FFL%20transfer&amp;body=Hi%20Big%20Rock%20Arms%2C%0A%0AI%27m%20buying%20a%20firearm%20online%20and%20would%20like%20to%20transfer%20it%20through%20you.%0A%0ASeller%3A%20%0AItem%3A%20%0A%0AThanks%2C%0A">Email us about a transfer</a>
+        </div>
+        <ol class="transfer__steps">
+          <li><p><strong>Email us before you check out.</strong> Tell us the seller and what you&rsquo;re buying.</p></li>
+          <li><p><strong>We send the seller our license.</strong> They ship straight to us.</p></li>
+          <li><p><strong>We email you when it arrives.</strong> It&rsquo;s logged in the moment it&rsquo;s in.</p></li>
+          <li><p><strong>You pick it up by appointment.</strong> Photo ID, Form 4473, background check, done.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Warning panel -->
+    <section class="pickup" id="pickup" aria-labelledby="pickup-title">
+      <div class="wrap">
+        <div class="warn">
+          <h2 id="pickup-title" class="warn__title">Read before pickup</h2>
+          <ul class="warn__list">
+            <li>Bring a valid, government-issued photo ID with your current address. If you hold an Arizona concealed carry permit, bring it too.</li>
+            <li>Every firearm goes out through ATF Form 4473 and a federal background check. No exceptions, no shortcuts.</li>
+            <li>Federal law sets the age: 21 and over for handguns, 18 and over for rifles and shotguns from a licensed dealer.</li>
+            <li>Pickup is by appointment in Tucson. We&rsquo;ll send the details when your order arrives.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom">
+    <div class="wrap bottom__grid">
+      <img src="assets/logo-320.webp" width="120" height="127" alt="" loading="lazy">
+      <div>
+        <p class="bottom__name">Big Rock Arms LLC</p>
+        <p class="bottom__meta"><span>Licensed firearms dealer <svg class="pip"><use href="#star"/></svg></span> <span>Tucson, Arizona <svg class="pip"><use href="#star"/></svg></span> <span>By appointment</span></p>
+        <p><a href="mailto:bigrockarms@gmail.com">bigrockarms@gmail.com</a></p>
+      </div>
+      <p class="bottom__lot">Packed in Tucson, AZ<br>&copy; <span id="year">2026</span> Big Rock Arms LLC</p>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
