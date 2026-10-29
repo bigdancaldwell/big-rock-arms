@@ -333,6 +333,9 @@ a:hover { text-decoration-color: var(--red); }
   .bottom__lot { text-align: left; justify-self: start; }
 }
 
+/* spam trap: off-screen for people, still filled in by bots */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .band::before, .band__line { animation: none; }

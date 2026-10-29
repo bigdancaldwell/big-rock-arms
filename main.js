@@ -1,5 +1,5 @@
 // Big Rock Arms: the request ticket prints itself onto the carton face as you type,
-// then opens the visitor's email app with the request addressed to the shop.
+// then sends it to the shop through send.php (falling back to the visitor's email app).
 (function () {
   var TO = 'bigrockarms@gmail.com';
   var form = document.getElementById('request-form');
@@ -101,13 +101,46 @@
       '',
       'Thanks!'
     ];
-    window.location.href = 'mailto:' + TO +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(lines.join('\n'));
-
     var note = document.getElementById('form-note');
-    note.innerHTML = 'Your email app should open with the request ready to send. ' +
-      'If nothing happened, email <a href="mailto:' + TO + '">' + TO + '</a> directly.';
+    var button = form.querySelector('button[type=submit]');
+
+    // if the site can't send it, fall back to the visitor's email app so the request isn't lost
+    function viaEmailApp() {
+      window.location.href = 'mailto:' + TO +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(lines.join('\n'));
+      note.innerHTML = 'We couldn&rsquo;t send that from the site, so your email app should open with the request ready. ' +
+        'If nothing happened, email <a href="mailto:' + TO + '">' + TO + '</a> directly.';
+    }
+    function ready() {
+      button.disabled = false;
+      button.textContent = 'Send request';
+    }
+
+    var data = new FormData(form);
+    data.set('kind', kind);
+    button.disabled = true;
+    button.textContent = 'Sending…';
+
+    fetch('send.php', { method: 'POST', body: data })
+      .then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); })
+      .then(function (res) {
+        if (res.body.ok) {
+          form.classList.add('is-sent');
+          button.textContent = 'Request sent';
+          note.textContent = 'Got it. We’ll reply to ' + email.value.trim() + ' with availability and a price.';
+        } else if (res.status === 422) {
+          ready();
+          note.textContent = res.body.message;
+        } else {
+          ready();
+          viaEmailApp();
+        }
+      })
+      .catch(function () {
+        ready();
+        viaEmailApp();
+      });
   });
 
   ['blur'].forEach(function (ev) {
