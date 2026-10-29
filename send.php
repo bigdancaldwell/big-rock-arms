@@ -4,7 +4,7 @@
 // keyed by a hash of the IP so no address is written to disk.
 
 const TO = 'bigrockarms@gmail.com';
-const FROM = 'forms@bigrockarms.com';
+const FROM = 'sales@bigrockarms.com';
 const KINDS = ['Special order', 'FFL transfer', 'Optics & accessories', 'Something else'];
 const LIMIT = 5;          // requests per visitor
 const WINDOW = 3600;      // per hour
