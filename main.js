@@ -34,9 +34,11 @@
     return k ? k.value : 'Special order';
   }
 
-  // A single FFL transfer is a flat $20: choosing it fills the budget box with the fee.
-  var TRANSFER = 'FFL transfer';
-  var TRANSFER_FEE = '$20';
+  // Transfers are flat fees: choosing one fills the budget box with the fee.
+  var FEES = {
+    'FFL transfer': { fee: '$20', label: 'Transfer fee <span class="opt">(single firearm)</span>', placeholder: 'The firearm you bought, and who is shipping it' },
+    'NFA transfer': { fee: '$50', label: 'Transfer fee <span class="opt">(per NFA item)</span>', placeholder: 'The NFA item you bought, and which dealer is sending it' }
+  };
   var budgetLabel = document.querySelector('label[for=budget]');
   var budgetLabelHTML = budgetLabel.innerHTML;
   var itemPlaceholder = item.placeholder;
@@ -44,13 +46,14 @@
 
   function applyKind(kind) {
     if (kind === lastKind) return;
-    if (kind === TRANSFER) {
-      budget.dataset.prev = budget.value;
-      budget.value = TRANSFER_FEE;
+    var next = FEES[kind];
+    if (!FEES[lastKind]) budget.dataset.prev = budget.value;
+    if (next) {
+      budget.value = next.fee;
       budget.readOnly = true;
-      budgetLabel.innerHTML = 'Transfer fee <span class="opt">(single firearm)</span>';
-      item.placeholder = 'The firearm you bought, and who is shipping it';
-    } else if (lastKind === TRANSFER) {
+      budgetLabel.innerHTML = next.label;
+      item.placeholder = next.placeholder;
+    } else if (FEES[lastKind]) {
       budget.value = budget.dataset.prev || '';
       budget.readOnly = false;
       budgetLabel.innerHTML = budgetLabelHTML;
@@ -92,8 +95,8 @@
       '',
       'Order type: ' + kind,
       'Looking for: ' + item.value.trim(),
-      (kind === TRANSFER
-        ? 'Transfer fee: ' + TRANSFER_FEE + ' (single firearm)'
+      (FEES[kind]
+        ? 'Transfer fee: ' + FEES[kind].fee + (kind === 'NFA transfer' ? ' (per NFA item)' : ' (single firearm)')
         : 'Budget: ' + (budget.value.trim() || 'Not specified')),
       '',
       'Name: ' + (name.value.trim() || ''),

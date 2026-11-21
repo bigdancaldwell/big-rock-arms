@@ -252,6 +252,8 @@ a:hover { text-decoration-color: var(--red); }
 .transfer__lede { margin: 18px 0 28px; font-size: 1.1875rem; max-width: 40ch; }
 .transfer__fee { margin: -8px 0 28px; display: flex; align-items: baseline; gap: .5em; font: 800 .875rem/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; }
 .transfer__fee span { font: 900 4rem/.85 var(--f-display); color: var(--board); letter-spacing: -.01em; }
+.transfer__fee + .transfer__fee { margin-top: -12px; }
+.transfer__nfa { margin: -8px 0 28px; max-width: 44ch; font-size: 1rem; }
 .transfer__steps { margin: 0; padding: 0; list-style: none; counter-reset: s; border-top: 3px solid var(--cream); }
 .transfer__steps li {
   counter-increment: s; display: grid; grid-template-columns: 3.2rem 1fr; gap: 8px; align-items: start;
