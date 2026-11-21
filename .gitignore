@@ -7,3 +7,5 @@ assets/logo-source.png
 assets/logo-clean-source.png
 .DS_Store
 assets/logo-900.png
+# SMTP login for send.php: lives on the server above the web root, never in git
+smtp-config.php
