@@ -1,0 +1,10 @@
+# One canonical address: https://bigrockarms.com
+# Sends http:// and www. visitors to the secure bare domain with a permanent (301) redirect.
+# Note: https://www. only reaches this rule once the SSL certificate also covers www.bigrockarms.com.
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://bigrockarms.com%{REQUEST_URI} [L,R=301]
+
+# Keep the git folder and internal notes off the web
+RedirectMatch 404 /\.git
