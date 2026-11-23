@@ -5,7 +5,7 @@
 
 const TO = 'bigrockarms@gmail.com';
 const FROM = 'sales@bigrockarms.com';
-const KINDS = ['Special order', 'FFL transfer', 'Optics & accessories', 'Something else'];
+const KINDS = ['Special order', 'FFL transfer', 'NFA transfer', 'Optics & accessories', 'Something else'];
 const LIMIT = 5;          // requests per visitor
 const WINDOW = 3600;      // per hour
 
@@ -51,13 +51,14 @@ if (count($hits) >= LIMIT) reply(429, false, 'Too many requests. Please email us
 $hits[] = time();
 file_put_contents($bucket, json_encode(array_values($hits)), LOCK_EX);
 
-$transfer = $kind === 'FFL transfer';
+$fees = ['FFL transfer' => '$20 (single firearm)', 'NFA transfer' => '$50 (per NFA item)'];
+$transfer = isset($fees[$kind]);
 $lines = [
   'New request from bigrockarms.com',
   '',
   'Order type: ' . $kind,
   'Looking for: ' . $item,
-  $transfer ? 'Transfer fee: $20 (single firearm)' : 'Budget: ' . ($budget !== '' ? $budget : 'Not specified'),
+  $transfer ? 'Transfer fee: ' . $fees[$kind] : 'Budget: ' . ($budget !== '' ? $budget : 'Not specified'),
   '',
   'Name: ' . ($name !== '' ? $name : 'Not given'),
   'Email: ' . $email,
